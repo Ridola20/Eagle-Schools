@@ -1,0 +1,102 @@
+#: import C kivy.utils.get_color_from_hex
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+
+<MainScreen>:
+	admission_number: admission_number
+	student_pin: student_pin
+
+	#MDBoxLayout:
+	#	size_hint_y: 1
+	#	md_bg_color: get_color_from_hex("#111111")
+	#	FitImage:
+	#		source: "../images/child.jpg"
+	#		#opacity: .3
+	MDBoxLayout:
+		orientation: "vertical"
+		padding: 0
+		spacing: 0
+		size_hint_x: 1
+		size_hint_y: 1
+		MDBoxLayout:
+			size_hint_y: .2
+			spacing: 25
+			size_hint_x: 1
+			pos_hint: {"x": 0, "y": .7}
+			id: "top-section"
+			padding: 0, 0, 0, 0
+			orientation: "vertical"
+			MDLabel:
+				text: "EAGLE   SCHOOLS"
+				bold: True
+				font_size: 25
+				valign: "center"
+				halign: "center"
+			MDIcon:
+				source: "../images/front_1.jpg"
+
+		MDBoxLayout: 
+			id: "form"
+			size_hint_x: 1
+			size_hint_y: .5
+			padding: 0, 40, 0, 0
+			spacing: 20
+			orientation: "vertical"
+
+			MDBoxLayout:
+				size_hint_x: 1
+				orientation: "vertical"
+				padding: 30
+				spacing: 20
+				MDLabel:
+					text: "Admission Number"
+				MDTextField:
+					id: admission_number
+					hint_text: "eg: EC/ST/SS/2023/000"
+					mode: "fill"
+					text: "EC/ST/SS/2023/000"
+
+
+			MDBoxLayout:
+				size_hint_x: 1
+				orientation: "vertical"
+				spacing: 15
+				padding: 30
+				MDLabel:
+					text: "Access Key"
+				TextInput:
+					id: student_pin
+					size_hint_y: None
+					height: 30
+					outline: 0
+					style_class: ""
+					outline_width: 0
+					outline_color: "transparent"
+					#password: True
+					text: "4444"
+					multiline: False
+					focus_rectangle: False
+					border_width: 0
+					border_color: get_color_from_hex("#ffffff")
+					#on_text_validate: #This is to run a function whenever the enter buttonn is hit after typing
+
+
+		MDBoxLayout:
+			size_hint_x: 1
+			size_hint_y: .2
+			padding: 0, 25
+			orientation: "horizontal"
+
+			MDTextButton:
+				text: "GUEST"
+				bold: True
+				halign: "center"
+				size_hint_x: .5
+				on_press: app.change_screen("guestview")
+
+			MDTextButton:
+				size_hint_x: .5
+				text: "LOGIN"
+				halign: "center"
+				bold: True
+				on_press: root.check_authentication()
+				# on_release: app.change_screen("stddashboard") if root.authenticated == True else pass
